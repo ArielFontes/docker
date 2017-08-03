@@ -1,0 +1,11 @@
+# Mark the commands below to be run as a batch
+batch
+
+# Add oracle driver
+/subsystem=datasources/jdbc-driver=oracle:add(driver-name=oracle,driver-module-name=com.oracle.ojdbc6,driver-xa-datasource-class-name=oracle.jdbc.driver.OracleDriver)
+
+# Add the datasource
+data-source add --name=appDataSource --driver-name=oracle --jndi-name=java:/appDataSource --connection-url=jdbc:oracle:thin:@oracle11g:1521:xe --user-name=system --password=oracle --enabled=true
+
+# Execute the batch
+run-batch
